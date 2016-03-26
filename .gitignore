@@ -45,3 +45,21 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+#自己配置，设置github提交白名单
+/*
+!/.apt_generated/
+!/.settings/
+!/assets/
+!/compile-lib/
+!/libs/
+!/res/
+!/src/
+!.classpath
+!.factorypath
+!.gitignore
+!.project
+!AndroidManifest.xml
+!ic_launcher-web.png
+!proguard-project.txt
+!project.properties

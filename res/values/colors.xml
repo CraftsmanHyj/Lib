@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- listview的item点击效果 -->
+    <color name="item_press">#ffff0000</color>
+    <color name="item_normal">#44ff0000</color>
+
+</resources>

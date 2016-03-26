@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="图片美化测试"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/mtBtPrimaryColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RGB图片色相调整" />
+
+    <Button
+        android:id="@+id/mtBtColorMatrix"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="颜色矩阵设置" />
+
+    <Button
+        android:id="@+id/mtBtPixelsEffect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="像素矩阵" />
+
+</LinearLayout>

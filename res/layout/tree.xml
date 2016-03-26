@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hyj="http://schemas.android.com/apk/res/com.hyj.lib"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.hyj.lib.tree.Tree
+        android:id="@+id/treeLvCustom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        hyj:expandlevel="1" />
+
+</LinearLayout>

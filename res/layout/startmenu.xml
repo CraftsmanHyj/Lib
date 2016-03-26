@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/FrameLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/startIv8"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/img8" />
+
+    <ImageView
+        android:id="@+id/startIv7"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/img7" />
+
+    <ImageView
+        android:id="@+id/startIv6"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/img6" />
+
+    <ImageView
+        android:id="@+id/startIv5"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/img5" />
+
+    <ImageView
+        android:id="@+id/startIv4"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/img4" />
+
+    <ImageView
+        android:id="@+id/startIv3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/img3" />
+
+    <ImageView
+        android:id="@+id/startIv2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/img2" />
+
+    <ImageView
+        android:id="@+id/startIv1"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/img1" />
+
+</FrameLayout>

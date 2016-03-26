@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/recycMenuAdd"
+        android:icon="@drawable/ic_menu_add"
+        android:orderInCategory="100"
+        android:showAsAction="ifRoom"
+        android:title="增加"/>
+    <item
+        android:id="@+id/recycMenuDel"
+        android:icon="@drawable/ic_menu_delete"
+        android:orderInCategory="100"
+        android:showAsAction="ifRoom"
+        android:title="删除"/>
+    <item
+        android:id="@+id/recycMenuListView"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="ListView"/>
+    <item
+        android:id="@+id/recycMenuGridView"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="GridView"/>
+    <item
+        android:id="@+id/recycMenuGridViewHoriz"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="GridViewHorizontal"/>
+    <item
+        android:id="@+id/recycMenuStaggerd"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="Staggerd"/>
+
+</menu>

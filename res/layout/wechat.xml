@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hyj="http://schemas.android.com/apk/res/com.hyj.lib"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/chatVp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <View
+        android:id="@+id/chatTabLine"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/holo_green_light" />
+
+    <LinearLayout
+        android:id="@+id/chatLlTab"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/tab_bg"
+        android:orientation="horizontal" >
+
+        <com.hyj.lib.wechat.TabView
+            android:id="@+id/chatTvOne"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            hyj:icon="@drawable/tab_msg"
+            hyj:text="微信"
+            hyj:text_size="12sp"
+            hyj:color="#ff45c01a" />
+
+        <com.hyj.lib.wechat.TabView
+            android:id="@+id/chatTvTwo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            hyj:icon="@drawable/tab_frend"
+            hyj:text="通讯录"
+            hyj:text_size="12sp"
+            hyj:color="#ff45c01a" />
+
+        <com.hyj.lib.wechat.TabView
+            android:id="@+id/chatTvThird"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            hyj:icon="@drawable/tab_find"
+            hyj:text="发现"
+            hyj:text_size="12sp"
+            hyj:color="#ff45c01a" />
+
+        <com.hyj.lib.wechat.TabView
+            android:id="@+id/chatTvFour"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            hyj:icon="@drawable/tab_my"
+            hyj:text="我"
+            hyj:text_size="12sp"
+            hyj:color="#ff45c01a" />
+    </LinearLayout>
+
+</LinearLayout>

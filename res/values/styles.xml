@@ -1,0 +1,25 @@
+<resources>
+
+    <style name="AppBaseTheme" parent="android:Theme.Light" />
+
+    <style name="AppTheme" parent="AppBaseTheme" />
+
+    <!-- 仿微信图片上传，popupwindow弹出窗口样式 -->
+    <style name="popupwindow_anim">
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_down</item>
+    </style>
+
+    <!-- 仿微信聊天 -->
+    <style name="Theme_AudioDialog" parent="@android:Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <!-- dialog是浮动的 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 背景是否变暗 -->
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+</resources>

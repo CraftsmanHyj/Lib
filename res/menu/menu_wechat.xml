@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/chatSearch"
+        android:actionViewClass="android.widget.SearchView"
+        android:icon="@drawable/ac_search"
+        android:showAsAction="ifRoom|collapseActionView"
+        android:title="查找"/>
+    <item
+        android:id="@+id/chatGroupChat"
+        android:icon="@drawable/tab_my"
+        android:title="发起群聊"/>
+    <item
+        android:id="@+id/chatAddFreind"
+        android:icon="@drawable/ac_addfriend"
+        android:title="添加好友"/>
+    <item
+        android:id="@+id/chatScan"
+        android:icon="@drawable/ac_scan"
+        android:title="扫一扫"/>
+    <item
+        android:id="@+id/chateedBack"
+        android:icon="@drawable/ac_mail"
+        android:title="意见反馈"/>
+
+</menu>

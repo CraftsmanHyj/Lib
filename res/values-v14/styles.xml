@@ -1,0 +1,14 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+
+        <!-- 修改overflowbutton图标 -->
+        <item name="android:actionOverflowButtonStyle">@style/wechatOverflowButtonStyle</item>
+    </style>
+
+    <!-- 修改overflowButton图标 -->
+    <style name="wechatOverflowButtonStyle">
+        <item name="android:src">@drawable/ac_add</item>
+    </style>
+
+</resources>

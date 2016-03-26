@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="注解使用案例\n用注解可以开发通用框架，增强代码的复用"
+        android:textColor="@android:color/holo_red_dark" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="使用注解实现JavaBean转换成SQL：" />
+
+    <TextView
+        android:id="@+id/annoTvSql"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="反射案例结果："
+        android:textColor="@android:color/holo_red_dark" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
+
+        <TextView
+            android:id="@+id/annoTvReflect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top|left" />
+    </ScrollView>
+
+</LinearLayout>

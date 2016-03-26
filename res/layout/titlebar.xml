@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hyj="http://schemas.android.com/apk/res/com.hyj.lib"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.hyj.lib.title_bar.TitleBar
+        android:id="@+id/titleCustom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        hyj:leftBackground="@android:color/holo_blue_dark"
+        hyj:leftText="Back"
+        hyj:leftTextColor="#FFFFFF"
+        hyj:rightBackground="@android:color/holo_blue_dark"
+        hyj:rightText="More"
+        hyj:rightTextColor="#FFFFFF"
+        hyj:titleText="自定义标题"
+        hyj:titleTextColor="#123412"
+        hyj:titleTextSize="10sp" />
+
+</LinearLayout>

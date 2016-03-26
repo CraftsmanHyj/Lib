@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hyj="http://schemas.android.com/apk/res/com.hyj.lib"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp" >
+
+        <TextView
+            android:id="@+id/jigsawLevel"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/bg_circle"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="1" />
+
+        <TextView
+            android:id="@+id/jigsawTime"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/jigsawLevel"
+            android:background="@drawable/bg_circle"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="60" />
+
+        <TextView
+            android:id="@+id/jigsawRestart"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/jigsawTime"
+            android:background="@drawable/bg_circle"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="重新开始" />
+
+        <TextView
+            android:id="@+id/jigsawPreview"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/jigsawRestart"
+            android:background="@drawable/bg_circle"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="预览" />
+    </RelativeLayout>
+
+    <com.hyj.lib.jigsaw.GameJigsawLayout
+        android:id="@+id/jigsaw"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="3dp"
+        hyj:drawable="@drawable/image"
+        hyj:timelimit="true" />
+
+</LinearLayout>

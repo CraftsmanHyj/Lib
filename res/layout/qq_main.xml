@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hyj="http://schemas.android.com/apk/res/com.hyj.lib"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.hyj.lib.qq5_0.SlidingMenu
+        android:id="@+id/qqSlidingMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/qq_frame_background"
+        hyj:rightPadding="100dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <include layout="@layout/qq_menu" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/qq"
+                android:orientation="vertical" >
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="toggleMenu"
+                    android:text="菜单" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.hyj.lib.qq5_0.SlidingMenu>
+
+</LinearLayout>
