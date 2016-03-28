@@ -1,6 +1,7 @@
 package com.hyj.lib.http;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
 import org.apache.http.NoHttpResponseException;
 import org.apache.http.client.ClientProtocolException;
@@ -34,8 +36,6 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.ExecutionContext;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
-
-import com.hyj.lib.tools.LogUtils;
 
 /**
  * HttpClient获得网络信息
@@ -122,6 +122,72 @@ public class HttpClientUtils extends HttpApi {
 	}
 
 	@Override
+	public long getContentLength(String strUrl) {
+		DefaultHttpClient httpClient = null;
+		HttpGet httpGet = null;
+		long length = 0;
+
+		try {
+			strUrl = urlEncode(strUrl.trim(), HttpApi.CHARSET);
+			httpClient = getDefaultHttpClient(null);
+			httpGet = new HttpGet(strUrl);
+			putSessionID(httpGet);
+
+			HttpResponse httpResponse = httpClient.execute(httpGet);
+			length = httpResponse.getEntity().getContentLength();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			abortConnection(httpGet, httpClient);
+		}
+
+		return length;
+	}
+
+	@Override
+	public InputStream getInputStream(String strUrl) {
+		return getInputStream(strUrl, 0, 0);
+	}
+
+	@Override
+	public InputStream getInputStream(String strUrl, long start, long end) {
+		DefaultHttpClient httpClient = null;
+		HttpGet httpGet = null;
+		InputStream is = null;
+
+		try {
+			strUrl = urlEncode(strUrl.trim(), HttpApi.CHARSET);
+			httpClient = getDefaultHttpClient(null);
+			httpGet = new HttpGet(strUrl);
+			putSessionID(httpGet);
+
+			if (start != end && end > 0) {
+				httpGet.addHeader("Range", "bytes=" + start + "-" + end);
+			}
+
+			HttpResponse response = httpClient.execute(httpGet);
+			// 判断是否支持断点续传，分段下载
+			if (HttpStatus.SC_PARTIAL_CONTENT == response.getStatusLine()
+					.getStatusCode()) {
+				HttpEntity entity = response.getEntity();
+				is = entity.getContent();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (null != is) {
+					is.close();
+				}
+				abortConnection(httpGet, httpClient);
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return is;
+	}
+
+	@Override
 	public String getUrlContext(String strUrl) {
 		String responseStr = null;// 发送请求，得到响应
 		DefaultHttpClient httpClient = null;
@@ -131,17 +197,11 @@ public class HttpClientUtils extends HttpApi {
 			httpClient = getDefaultHttpClient(null);
 
 			httpGet = new HttpGet(strUrl);
-			if (null != HttpApi.sessionId) {
-				httpGet.setHeader("Cookie", HttpApi.SESSION + "="
-						+ HttpApi.sessionId);
-			}
+			putSessionID(httpGet);
 
 			responseStr = httpClient.execute(httpGet, strResponseHandler);
-
-			// setSessionId(httpClient);//移到了abortConnection里面，未测试是否能用160318
 		} catch (Exception e) {
 			e.printStackTrace();
-			LogUtils.e("HttpClientUtils：" + e.getMessage());
 		} finally {
 			abortConnection(httpGet, httpClient);
 		}
@@ -169,15 +229,9 @@ public class HttpClientUtils extends HttpApi {
 
 			httpPost = new HttpPost(strUrl);
 			httpPost.setEntity(new UrlEncodedFormEntity(lPairs, HttpApi.CHARSET));
-
-			if (null != HttpApi.sessionId) {
-				httpPost.setHeader("Cookie", HttpApi.SESSION + "="
-						+ HttpApi.sessionId);
-			}
+			putSessionID(httpPost);
 
 			responseStr = httpClient.execute(httpPost, strResponseHandler);
-
-			// setSessionId(httpClient);//移到了abortConnection里面，未测试是否能用160318
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -205,6 +259,18 @@ public class HttpClientUtils extends HttpApi {
 		}
 		m.appendTail(b);
 		return b.toString();
+	}
+
+	/**
+	 * 设置请求Header中的SessionId值
+	 * 
+	 * @param httpRequestBase
+	 */
+	private void putSessionID(HttpRequestBase httpRequestBase) {
+		if (null != HttpApi.sessionId) {
+			httpRequestBase.setHeader("Cookie", HttpApi.SESSION + "="
+					+ HttpApi.sessionId);
+		}
 	}
 
 	/**
@@ -255,28 +321,6 @@ public class HttpClientUtils extends HttpApi {
 			}
 
 			httpClient.getConnectionManager().shutdown();
-		}
-	}
-
-	/**
-	 * 设置seesionId
-	 * 
-	 * @param httpClient
-	 */
-	@SuppressWarnings("unused")
-	private void setSessionId(DefaultHttpClient httpClient) {
-		CookieStore mCookieStore = httpClient.getCookieStore();
-		List<Cookie> cookies = mCookieStore.getCookies();
-
-		if (null == cookies) {
-			return;
-		}
-
-		for (Cookie cookie : cookies) {
-			if (HttpApi.SESSION.equals(cookie.getName())) {
-				HttpApi.sessionId = cookie.getValue();
-				break;
-			}
 		}
 	}
 }

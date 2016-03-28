@@ -73,12 +73,63 @@ public class HttpUrlConUtils extends HttpApi {
 		return conn;
 	}
 
-	/**
-	 * 获取某个url的内容
-	 * 
-	 * @param strUrl
-	 * @return
-	 */
+	@Override
+	public long getContentLength(String strUrl) {
+		HttpURLConnection conn = null;
+		int length = 0;
+
+		try {
+			conn = getConnection(strUrl);
+			conn.setRequestMethod(GET);
+			if (HttpStatus.SC_OK == conn.getResponseCode()) {
+				length = conn.getContentLength();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			abortConnection(conn);
+		}
+
+		return length;
+	}
+
+	@Override
+	public InputStream getInputStream(String strUrl) {
+		return getInputStream(strUrl, 0, 0);
+	}
+
+	@Override
+	public InputStream getInputStream(String strUrl, long start, long end) {
+		HttpURLConnection conn = null;
+		InputStream is = null;
+
+		try {
+			conn = getConnection(strUrl);
+			conn.setRequestMethod(GET);
+
+			if (start != end && end > 0) {
+				conn.setRequestProperty("Range", "bytes=" + start + "-" + end);
+			}
+
+			if (HttpStatus.SC_PARTIAL_CONTENT == conn.getResponseCode()) {
+				is = conn.getInputStream();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (null != is) {
+					is.close();
+				}
+				abortConnection(conn);
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return is;
+	}
+
 	@Override
 	public String getUrlContext(String strUrl) {
 		HttpURLConnection conn = null;
@@ -86,12 +137,11 @@ public class HttpUrlConUtils extends HttpApi {
 
 		try {
 			conn = getConnection(strUrl);
-			conn.setRequestMethod("GET");
+			conn.setRequestMethod(GET);
 			conn.connect();
 
 			// 默认不会立即发送给服务器, 只有当试图取得服务器返回信息的时候,信息才会真正的发送给服务器
-			int status = conn.getResponseCode();
-			if (HttpStatus.SC_OK == status) {
+			if (HttpStatus.SC_OK == conn.getResponseCode()) {
 				is = conn.getInputStream();
 				/**
 				 * <pre>
@@ -144,7 +194,7 @@ public class HttpUrlConUtils extends HttpApi {
 			byte[] entity = sb.toString().getBytes();// 得到实体数据
 
 			conn = getConnection(strUrl);
-			conn.setRequestMethod("POST");
+			conn.setRequestMethod(POST);
 			conn.setRequestProperty("Content-Type",
 					"application/x-www-form-urlencoded");// 设置类型
 			conn.setRequestProperty("Content-Length",

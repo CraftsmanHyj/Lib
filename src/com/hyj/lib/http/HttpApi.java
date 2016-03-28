@@ -1,5 +1,6 @@
 package com.hyj.lib.http;
 
+import java.io.InputStream;
 import java.util.Map;
 
 /**
@@ -8,6 +9,14 @@ import java.util.Map;
  * @author Xiaoxin
  */
 public abstract class HttpApi {
+	/**
+	 * get方式请求
+	 */
+	public static final String GET = "GET";
+	/**
+	 * post方式请求
+	 */
+	public static final String POST = "POST";
 	/**
 	 * 数据编码格式
 	 */
@@ -55,6 +64,38 @@ public abstract class HttpApi {
 		}
 		return getUrlContext(strUrl + sb);
 	}
+
+	/**
+	 * 获取下载文件长度
+	 * 
+	 * @param strUrl
+	 *            文件请求地址
+	 * @return
+	 */
+	public abstract long getContentLength(String strUrl);
+
+	/**
+	 * 获取请求的数据流
+	 * 
+	 * @param strUrl
+	 *            请求地址
+	 * @return
+	 */
+	public abstract InputStream getInputStream(String strUrl);
+
+	/**
+	 * 获取请求的数据流，指定数据流的开始、结束为止
+	 * 
+	 * @param strUrl
+	 *            请求地址
+	 * @param start
+	 *            开始位置
+	 * @param end
+	 *            结束位置
+	 * @return
+	 */
+	public abstract InputStream getInputStream(String strUrl, long start,
+			long end);
 
 	/**
 	 * post方式提交数据
