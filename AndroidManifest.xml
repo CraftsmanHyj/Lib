@@ -227,6 +227,19 @@
         <activity
             android:name="com.hyj.lib.indicator.ViewPagerIndicatorActivity"
             android:launchMode="singleTask" />
+
+        <!-- 五子棋游戏 -->
+        <activity
+            android:name="com.hyj.lib.gobang.GobangActivity"
+            android:launchMode="singleTask" />
+
+        <!-- 高清加载巨图方案 -->
+        <activity
+            android:name="com.hyj.lib.largeImage.LargeImageViewActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="com.hyj.lib.largeImage.LargeImageViewSimpleBakActivity"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

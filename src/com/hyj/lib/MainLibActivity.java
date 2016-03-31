@@ -21,11 +21,13 @@ import com.hyj.lib.camera.CameraMainActivity;
 import com.hyj.lib.down.DownLoadActivity;
 import com.hyj.lib.downservice.DownServiceActivity;
 import com.hyj.lib.flowlayout.FlowLayoutActivity;
+import com.hyj.lib.gobang.GobangActivity;
 import com.hyj.lib.image_mt.ImageMain;
 import com.hyj.lib.image_preview.ImagePreviewActivity;
 import com.hyj.lib.imagecycle.ImageCycleViewActivity;
 import com.hyj.lib.indicator.ViewPagerIndicatorActivity;
 import com.hyj.lib.jigsaw.JigsawActivity;
+import com.hyj.lib.largeImage.LargeImageViewActivity;
 import com.hyj.lib.listviewindex.ListViewIndexActivity;
 import com.hyj.lib.listviewrefresh.ListViewRfreshActivity;
 import com.hyj.lib.lockpattern.LockPatternActivity;
@@ -102,6 +104,16 @@ public class MainLibActivity extends Activity {
 
 	private void initData() {
 		ListItem bean;
+
+		bean = new ListItem();
+		bean.setTitle("高清加载巨图方案");
+		bean.setValue(LargeImageViewActivity.class);
+		lItems.add(bean);
+
+		bean = new ListItem();
+		bean.setTitle("五子棋游戏");
+		bean.setValue(GobangActivity.class);
+		lItems.add(bean);
 
 		bean = new ListItem();
 		bean.setTitle("ViewPager指示器");

@@ -8,3 +8,5 @@ SVN下载地址：
 服务端：www.visualsvn.com/server/download
 客户端：https://tortoisesvn.net/downloads.html
 GitHub客户端地址：https://desktop.github.com/
+
+巨图实现方案资料：https://github.com/hongyangAndroid/Android_Blog_Demos
