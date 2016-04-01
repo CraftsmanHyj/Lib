@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ppll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/title_bar"
+    android:gravity="center" >
+
+    <TextView
+        android:id="@+id/ppTvShow"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="9"
+        android:ellipsize="middle"
+        android:paddingBottom="0dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="0dp"
+        android:singleLine="true"
+        android:textColor="#ff6f3a"
+        android:textSize="18dp" />
+
+    <ImageView
+        android:id="@+id/ppImgArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:src="@drawable/composer_icn_plus" />
+
+</LinearLayout>

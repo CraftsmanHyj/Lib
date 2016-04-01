@@ -102,8 +102,8 @@ public class LibApplication extends Application {
 	 */
 	private void loadPropertyDatas() {
 		// 是否打印日志
-		Constants.PROP_PRINTLOG = (Boolean) getProperty("printLog",
-				Constants.PROP_PRINTLOG);
+		Constants.PROP_ISDEBUG = (Boolean) getProperty("isDebug",
+				Constants.PROP_ISDEBUG);
 		// 输出日志的TAG标签值
 		Constants.PROP_LOGTAG = (String) getProperty("logTag",
 				Constants.PROP_LOGTAG);

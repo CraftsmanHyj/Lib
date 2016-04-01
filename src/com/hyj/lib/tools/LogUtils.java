@@ -14,7 +14,7 @@ public class LogUtils {
 	/**
 	 * 是否打印日志
 	 */
-	private final static boolean printLog = Constants.PROP_PRINTLOG;
+	private final static boolean printLog = Constants.PROP_ISDEBUG;
 
 	/**
 	 * 日志TAG标签

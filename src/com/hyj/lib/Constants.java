@@ -13,9 +13,9 @@ public class Constants implements Serializable {
 
 	/******************** 会从config.properties中读取数据覆盖这里的值 ********************/
 	/**
-	 * 字段：是否打印日志
+	 * 字段：程序是否处于调试状态
 	 */
-	public static boolean PROP_PRINTLOG = false;
+	public static boolean PROP_ISDEBUG = false;
 
 	/**
 	 * 字段：日志打印时输出的tag
