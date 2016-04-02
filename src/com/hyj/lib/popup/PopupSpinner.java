@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,7 +71,23 @@ public class PopupSpinner extends LinearLayout {
 		initData();
 		initListener();
 
-		setData(null);
+		List<Medium> lMedium = new ArrayList<Medium>();
+		Medium bean = new Medium();
+		bean.setName("SD卡");
+		bean.setImg(R.drawable.composer_camera);
+		lMedium.add(bean);
+
+		bean = new Medium();
+		bean.setName("HCE");
+		bean.setImg(R.drawable.adj);
+		lMedium.add(bean);
+
+		bean = new Medium();
+		bean.setName("SIM");
+		bean.setImg(R.drawable.img_head);
+		lMedium.add(bean);
+
+		setData(lMedium);
 	}
 
 	/**
@@ -206,6 +223,7 @@ public class PopupSpinner extends LinearLayout {
 				drIcon.setBounds(0, 0, drIcon.getMinimumWidth(),
 						drIcon.getMinimumHeight());
 				tv.setCompoundDrawables(null, drIcon, null, null);
+				tv.setGravity(Gravity.CENTER);
 				llMedium.addView(tv);
 
 				tv.setOnClickListener(new OnClickListener() {
@@ -253,7 +271,7 @@ public class PopupSpinner extends LinearLayout {
 
 		for (int i = 0; i < 3; i++) {
 			Card bean = new Card();
-			bean.setDpan("631081121000005292" + i);
+			bean.setDpan("531081121000005292" + i);
 			bean.setCardType(i % 2 + 1 + "");
 			bean.setDefaultcard(i == 0 ? 1 : 0);
 			bean.setMediumType(0x00000001);
@@ -262,7 +280,7 @@ public class PopupSpinner extends LinearLayout {
 
 		for (int i = 0; i < 3; i++) {
 			Card bean = new Card();
-			bean.setDpan("641081121000005292" + i);
+			bean.setDpan("441081121000005292" + i);
 			bean.setCardType(i % 2 + 1 + "");
 			bean.setDefaultcard(i == 0 ? 1 : 0);
 			bean.setMediumType(0x00000002);
@@ -272,21 +290,27 @@ public class PopupSpinner extends LinearLayout {
 	}
 
 	/**
-	 * 数据适配器
+	 * 下拉框数据适配器
 	 * 
-	 * @author Administrator
-	 * 
+	 * @Author hyj
+	 * @Date 2016-4-2 上午12:00:54
 	 */
 	private class SpinnerAdapter extends BaseAdapter {
+		/**
+		 * 显示正常的Item
+		 */
+		private final int ITEM = 0;
+		/**
+		 * 显示带标题的Item
+		 */
+		private final int TITLE = 1;
+
 		private Context context;
 		private List<Card> lData;
 
-		private final int ITEM = 0;// 显示正常item
-		private final int TITLE = 1;// 显示带标题的item
-
 		public SpinnerAdapter(List<Card> list, Context context) {
 			this.context = context;
-			if (list != null) {
+			if (null != list) {
 				this.lData = list;
 			} else {
 				this.lData = new ArrayList<Card>();

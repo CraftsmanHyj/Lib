@@ -102,12 +102,9 @@ public class DialogUtils {
 		builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				if (okAction != null) {
-					if (okAction.action()) {
-						dialog.dismiss();
-					}
-				} else {
-					dialog.dismiss();
+					okAction.action();
 				}
+				dialog.dismiss();
 			}
 		});
 
@@ -213,24 +210,19 @@ public class DialogUtils {
 		builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				if (okAction != null) {
-					if (okAction.action()) {
-						dialog.dismiss();
-					}
-				} else {
-					dialog.dismiss();
+					okAction.action();
 				}
+				dialog.dismiss();
 			}
 		});
 
 		builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				if (cancelAction != null) {
-					if (cancelAction.action()) {
-						dialog.dismiss();
-					}
-				} else {
+					cancelAction.action();
 					dialog.dismiss();
 				}
+				dialog.dismiss();
 			}
 		});
 
@@ -276,27 +268,20 @@ public class DialogUtils {
 		builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				if (okAction != null) {
-					if (okAction.action()) {
-						dialog.dismiss();
-					}
-				} else {
-					dialog.dismiss();
+					okAction.action();
 				}
+				dialog.dismiss();
 			}
 		});
 
 		if (null != cancelAction) {
 			builder.setNegativeButton("取消",
 					new DialogInterface.OnClickListener() {
-						@SuppressWarnings("unused")
 						public void onClick(DialogInterface dialog, int which) {
 							if (cancelAction != null) {
-								if (cancelAction.action()) {
-									dialog.dismiss();
-								}
-							} else {
-								dialog.dismiss();
+								cancelAction.action();
 							}
+							dialog.dismiss();
 						}
 					});
 		}
@@ -351,9 +336,7 @@ public class DialogUtils {
 	public interface DialogAction {
 		/**
 		 * Action所执行的操作
-		 * 
-		 * @return boolean ture：关闭对话框；false：不关闭对话框
 		 */
-		public boolean action();
+		public void action();
 	}
 }

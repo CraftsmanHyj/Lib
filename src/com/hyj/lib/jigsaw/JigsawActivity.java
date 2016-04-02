@@ -1,5 +1,6 @@
 package com.hyj.lib.jigsaw;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -54,6 +55,7 @@ public class JigsawActivity extends Activity {
 		game.pause();
 	}
 
+	@SuppressLint("ClickableViewAccessibility")
 	private void iniListener() {
 		tvRestart.setOnClickListener(new OnClickListener() {
 
@@ -94,10 +96,9 @@ public class JigsawActivity extends Activity {
 						"恭喜过关，是否进行下一级？", new DialogAction() {
 
 							@Override
-							public boolean action() {
+							public void action() {
 								game.nextLevel();
 								tvLevel.setText(nextLevel + "");
-								return true;
 							}
 						});
 			}
@@ -113,9 +114,8 @@ public class JigsawActivity extends Activity {
 		DialogUtils.showConfirmDialog(JigsawActivity.this, "提示", msg,
 				new DialogAction() {
 					@Override
-					public boolean action() {
+					public void action() {
 						game.restart();
-						return true;
 					}
 				});
 	}

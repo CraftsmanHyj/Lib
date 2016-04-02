@@ -1,5 +1,6 @@
 package com.hyj.lib.ui;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -34,23 +35,22 @@ public class DialogActivity extends Activity implements OnClickListener {
 		findViewById(R.id.dialogRb12).setOnClickListener(this);
 	}
 
+	@SuppressLint("InflateParams")
 	@Override
 	public void onClick(View v) {
 		DialogAction okAction = new DialogAction() {
 
 			@Override
-			public boolean action() {
+			public void action() {
 				DialogUtils.showToastShort(DialogActivity.this, "点击确认操作按钮");
-				return true;
 			}
 		};
 
 		DialogAction cancelAction = new DialogAction() {
 
 			@Override
-			public boolean action() {
+			public void action() {
 				DialogUtils.showToastShort(DialogActivity.this, "点击取消操作按钮");
-				return true;
 			}
 		};
 

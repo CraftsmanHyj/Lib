@@ -82,7 +82,7 @@ public class HttpFactory {
 			DialogAction okAction = new DialogAction() {
 
 				@Override
-				public boolean action() {
+				public void action() {
 					Intent intent = null;
 					int sdkVersion = Build.VERSION.SDK_INT;
 
@@ -93,7 +93,6 @@ public class HttpFactory {
 					}
 
 					context.startActivity(intent);
-					return true;
 				}
 			};
 
