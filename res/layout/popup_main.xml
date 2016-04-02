@@ -2,19 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/tcBtTimer"
-        android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="计时器" />
+        android:padding="5dp"
+        android:text="自定义下拉列表框展示：" />
 
-    <Button
-        android:id="@+id/tcBtTimerCount"
-        android:layout_width="wrap_content"
+    <com.hyj.lib.popup.PopupSpinner
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="发送短信" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 
 </LinearLayout>

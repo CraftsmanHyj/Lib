@@ -17,7 +17,6 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.hyj.lib.R;
-import com.hyj.lib.tools.DialogUtils;
 
 public class WuziqiPanel extends View {
 	private final int MAX_LINE = 10;// 最大行数
@@ -215,13 +214,20 @@ public class WuziqiPanel extends View {
 		boolean whiteWin = checkFiveInLine(lWhiteArray);
 		boolean blackWin = checkFiveInLine(lBlackArray);
 
+		int pieceCount = MAX_LINE * MAX_LINE;
+		int downCount = lWhiteArray.size() + lBlackArray.size();
+
 		if (whiteWin || blackWin) {
 			isGameOver = true;
 			isWhiteWinner = whiteWin;
 
 			String msg = isWhiteWinner ? "白子胜利" : "黑子胜利";
-			DialogUtils.showToastShort(getContext(), msg);
 
+			if (null != listener) {
+				listener.onTheEnd(msg);
+			}
+		} else if (pieceCount == downCount) {
+			String msg = "棋逢对手，平局";
 			if (null != listener) {
 				listener.onTheEnd(msg);
 			}

@@ -33,6 +33,7 @@ import com.hyj.lib.listviewrefresh.ListViewRfreshActivity;
 import com.hyj.lib.lockpattern.LockPatternActivity;
 import com.hyj.lib.lockpattern2.LockTestActivity;
 import com.hyj.lib.luckydial.LuckyDialActivity;
+import com.hyj.lib.popup.PopupActivity;
 import com.hyj.lib.qq5_0.SlidingActivity;
 import com.hyj.lib.recyclerview.RecyclerActivity;
 import com.hyj.lib.scratch.ScratchCardActivity;
@@ -104,6 +105,11 @@ public class MainLibActivity extends Activity {
 
 	private void initData() {
 		ListItem bean;
+
+		bean = new ListItem();
+		bean.setTitle("Popup弹出方案合集");
+		bean.setValue(PopupActivity.class);
+		lItems.add(bean);
 
 		bean = new ListItem();
 		bean.setTitle("高清加载巨图方案");

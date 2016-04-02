@@ -30,15 +30,22 @@ import com.hyj.lib.R;
 import com.hyj.lib.tools.DialogUtils;
 import com.hyj.lib.view.ListViewShowAll;
 
+/**
+ * 弹出下拉列表框
+ * 
+ * @Author hyj
+ * @Date 2016-4-2 下午4:57:59
+ */
 @SuppressLint("NewApi")
 public class PopupSpinner extends LinearLayout {
-	private Context context;
-	private List<Card> lData;// listview显示数据集合
+	private List<Card> lCard;// listview显示数据集合
 
+	// 显示部分
 	private LinearLayout llSp;
 	private TextView tvShow;// 控件显示内容
 	private ImageView imgArrow;// 触发弹出框按钮
 
+	// 弹出部分
 	private TextView tvTitle;// 弹出框的标题
 	private ListViewShowAll lvContent;// 弹出框的内容列表
 	private ScrollView sv;// 整体滑动scrollview
@@ -51,6 +58,29 @@ public class PopupSpinner extends LinearLayout {
 
 	private Map<Integer, String> mapMedium;// 存放介质名称
 
+	/**
+	 * 设置弹出框标题
+	 * */
+	public void setTitle(int resid) {
+		setTitle(getResources().getString(resid));
+	}
+
+	/**
+	 * 设置弹出框标题
+	 * */
+	public void setTitle(String title) {
+		tvTitle.setText(title);
+	}
+
+	/**
+	 * 获取选中的数据
+	 * 
+	 * @return
+	 */
+	public Card getSelectedItem() {
+		return selectedItem;
+	}
+
 	public PopupSpinner(Context context) {
 		this(context, null);
 	}
@@ -61,16 +91,25 @@ public class PopupSpinner extends LinearLayout {
 
 	public PopupSpinner(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		this.context = context;
 
-		myInit();
+		myInit(context);
 	}
 
-	public void myInit() {
+	public void myInit(Context context) {
 		initView(context);
 		initData();
 		initListener();
 
+		initTestData();
+	}
+
+	/**
+	 * 构造测试数据
+	 */
+	private void initTestData() {
+		setTitle("银行卡列表");
+
+		// 显示介质的值
 		List<Medium> lMedium = new ArrayList<Medium>();
 		Medium bean = new Medium();
 		bean.setName("SD卡");
@@ -87,7 +126,36 @@ public class PopupSpinner extends LinearLayout {
 		bean.setImg(R.drawable.img_head);
 		lMedium.add(bean);
 
-		setData(lMedium);
+		List<Card> lData = new ArrayList<Card>();
+		// 默认介质首选卡存放在0位置,其次是默认介质卡列表
+		for (int i = 0; i < 3; i++) {
+			Card card = new Card();
+			card.setDpan("621081121000005292" + i);
+			card.setCardType(i % 2 + 1 + "");
+			card.setDefaultcard(i == 0 ? 1 : 0);
+			card.setMediumType(0x00000000);
+			lData.add(card);
+		}
+
+		for (int i = 0; i < 3; i++) {
+			Card card = new Card();
+			card.setDpan("531081121000005292" + i);
+			card.setCardType(i % 2 + 1 + "");
+			card.setDefaultcard(i == 0 ? 1 : 0);
+			card.setMediumType(0x00000001);
+			lData.add(card);
+		}
+
+		for (int i = 0; i < 3; i++) {
+			Card card = new Card();
+			card.setDpan("441081121000005292" + i);
+			card.setCardType(i % 2 + 1 + "");
+			card.setDefaultcard(i == 0 ? 1 : 0);
+			card.setMediumType(0x00000002);
+			lData.add(card);
+		}
+
+		setData(lData, lMedium);
 	}
 
 	/**
@@ -96,29 +164,27 @@ public class PopupSpinner extends LinearLayout {
 	 * @param context
 	 */
 	@SuppressWarnings("deprecation")
+	@SuppressLint("InflateParams")
 	private void initView(Context context) {
 		LayoutInflater inflater = LayoutInflater.from(context);
 		inflater.inflate(R.layout.popupspinner, this);// 控件布局
 
+		// 显示部分
 		llSp = (LinearLayout) findViewById(R.id.ppll);
 		tvShow = (TextView) findViewById(R.id.ppTvShow);
 		imgArrow = (ImageView) findViewById(R.id.ppImgArrow);
 
+		// 弹出部分
 		View view = inflater.inflate(R.layout.popupspinnerdrop, null);// 弹出框布局
+		sv = (ScrollView) view.findViewById(R.id.spSv);
 		tvTitle = (TextView) view.findViewById(R.id.drTvTitle);
 
 		lvContent = (ListViewShowAll) view.findViewById(R.id.drLvContent);
-		lData = new ArrayList<Card>();
-		adapter = new SpinnerAdapter(lData, context);
+		lCard = new ArrayList<Card>();
+		adapter = new SpinnerAdapter(lCard, context);
 		lvContent.setAdapter(adapter);
 
-		sv = (ScrollView) view.findViewById(R.id.spSv);
-		sv.smoothScrollTo(0, 0);
-
 		llMedium = (LinearLayout) view.findViewById(R.id.drLlJz);
-
-		window = new PopupWindow(context);
-		window.setFocusable(true);
 
 		// 获取下拉箭头的坐标
 		int[] location = new int[2];
@@ -126,13 +192,15 @@ public class PopupSpinner extends LinearLayout {
 		int bmpW = BitmapFactory.decodeResource(getResources(),
 				R.drawable.composer_icn_plus).getWidth();// 获取图片宽度
 		int toX = (int) (location[0] - bmpW / 2);
-
 		// 根据坐标移动弹出框只是箭头位置
 		Animation animation = new TranslateAnimation(0, toX, 0, 0);
 		animation.setFillAfter(true);// True:图片停在动画结束位置
 		animation.setDuration(0);
 		// author.startAnimation(animation);
 
+		// 弹出承载内容的window
+		window = new PopupWindow(context);
+		window.setFocusable(true);
 		window.setContentView(view);
 		window.setWidth(LayoutParams.MATCH_PARENT);
 		window.setHeight(LayoutParams.WRAP_CONTENT);
@@ -140,14 +208,13 @@ public class PopupSpinner extends LinearLayout {
 		window.setBackgroundDrawable(new BitmapDrawable());
 	}
 
+	@SuppressLint("UseSparseArrays")
 	private void initData() {
 		mapMedium = new HashMap<Integer, String>();
 		mapMedium.put(0x00000000, "SD卡");
 		mapMedium.put(0x00000001, "NFC卡");
 		mapMedium.put(0x00000002, "SIM卡");
 		mapMedium.put(0x00000003, "蓝牙卡");
-
-		tvTitle.setText("下拉列表测试");
 	}
 
 	private void initListener() {
@@ -155,6 +222,7 @@ public class PopupSpinner extends LinearLayout {
 
 			@Override
 			public void onClick(View v) {
+				sv.smoothScrollTo(0, 0);
 				window.showAsDropDown(v);
 			}
 		});
@@ -167,7 +235,7 @@ public class PopupSpinner extends LinearLayout {
 				selectedItem = (Card) parent.getItemAtPosition(position);
 				tvShow.setText(selectedItem.toString());
 
-				if (window != null) {
+				if (null != window) {
 					window.dismiss();
 				}
 			}
@@ -175,118 +243,68 @@ public class PopupSpinner extends LinearLayout {
 	}
 
 	/**
-	 * 设置对话框标题
-	 * */
-	public void setTitle(String title) {
-		this.tvTitle.setText(title);
-	}
-
-	/**
-	 * 重载setTitle(String)
-	 * */
-	public void setTitle(int resid) {
-		this.tvTitle.setText(getResources().getString(resid));
-	}
-
-	/**
-	 * 设置显示的值
+	 * 设置下拉表要显示的值
 	 * 
-	 * @param lData
+	 * @param lCard
+	 *            银行卡列表
+	 * @param lMedium
+	 *            介质类型列表
 	 */
-	public void setCardsData(List<Card> lData) {
-		this.lData = lData;
-		adapter = new SpinnerAdapter(lData, context);
+	public void setData(List<Card> lCard, List<Medium> lMedium) {
+		setCardsData(lCard);
+		setMediumData(lMedium);
+	}
+
+	/**
+	 * 设置ListView中显示的值
+	 * 
+	 * @param lCard
+	 */
+	private void setCardsData(List<Card> lCard) {
+		this.lCard = lCard;
+		adapter = new SpinnerAdapter(lCard, getContext());
 		lvContent.setAdapter(adapter);
 
-		selectedItem = lData.get(0);
+		selectedItem = lCard.get(0);
 		tvShow.setText(selectedItem.toString());
-
-		llMedium.setVisibility(View.GONE);
 	}
 
 	/**
+	 * 设置用户介质显示列表
 	 * 
 	 * @param lMedium
-	 *            介质列表
 	 */
-	public void setData(List<Medium> lMedium) {
-		setCardsData(getCardList());
+	private void setMediumData(List<Medium> lMedium) {
+		if (null == lMedium || lMedium.isEmpty()) {
+			llMedium.setVisibility(View.GONE);
+			return;
+		}
+		llMedium.setVisibility(View.VISIBLE);
 
-		if (lMedium != null && !lMedium.isEmpty()) {
-			llMedium.setVisibility(View.VISIBLE);
+		for (final Medium bean : lMedium) {
+			TextView tv = new TextView(getContext());
+			tv.setText(bean.getName());
+			tv.setPadding(10, 10, 10, 10);
+			Drawable drIcon = getResources().getDrawable(bean.getImg());
+			drIcon.setBounds(0, 0, drIcon.getMinimumWidth(),
+					drIcon.getMinimumHeight());
+			tv.setCompoundDrawables(null, drIcon, null, null);
+			tv.setGravity(Gravity.CENTER);
+			llMedium.addView(tv);
 
-			for (final Medium bean : lMedium) {
-				TextView tv = new TextView(context);
-				tv.setText(bean.getName());
-				tv.setPadding(10, 10, 10, 10);
-				Drawable drIcon = getResources().getDrawable(bean.getImg());
-				drIcon.setBounds(0, 0, drIcon.getMinimumWidth(),
-						drIcon.getMinimumHeight());
-				tv.setCompoundDrawables(null, drIcon, null, null);
-				tv.setGravity(Gravity.CENTER);
-				llMedium.addView(tv);
-
-				tv.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						if (bean.getCls() == null) {
-							DialogUtils.showToastShort(context, "即将开放");
-							return;
-						} else {
-							DialogUtils.showToastShort(context, "点击");
-						}
+			tv.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					if (null == bean.getCls()) {
+						DialogUtils.showToastShort(getContext(), "即将开放");
+					} else {
+						DialogUtils.showToastShort(getContext(), "点击");
 					}
-				});
-			}
+
+					window.dismiss();
+				}
+			});
 		}
-	}
-
-	/**
-	 * 获取选中的数据
-	 * 
-	 * @return
-	 */
-	public Card getSelectedItem() {
-		return selectedItem;
-	}
-
-	/**
-	 * 获取用户已有卡列表
-	 * 
-	 * @return
-	 */
-	public List<Card> getCardList() {
-		List<Card> lData = new ArrayList<Card>();
-
-		// 默认介质首选卡存放在0位置,其次是默认介质卡列表
-		for (int i = 0; i < 3; i++) {
-			Card bean = new Card();
-			bean.setDpan("621081121000005292" + i);
-			bean.setCardType(i % 2 + 1 + "");
-			bean.setDefaultcard(i == 0 ? 1 : 0);
-			bean.setMediumType(0x00000000);
-			lData.add(bean);
-		}
-
-		for (int i = 0; i < 3; i++) {
-			Card bean = new Card();
-			bean.setDpan("531081121000005292" + i);
-			bean.setCardType(i % 2 + 1 + "");
-			bean.setDefaultcard(i == 0 ? 1 : 0);
-			bean.setMediumType(0x00000001);
-			lData.add(bean);
-		}
-
-		for (int i = 0; i < 3; i++) {
-			Card bean = new Card();
-			bean.setDpan("441081121000005292" + i);
-			bean.setCardType(i % 2 + 1 + "");
-			bean.setDefaultcard(i == 0 ? 1 : 0);
-			bean.setMediumType(0x00000002);
-			lData.add(bean);
-		}
-		return lData;
 	}
 
 	/**
@@ -305,11 +323,11 @@ public class PopupSpinner extends LinearLayout {
 		 */
 		private final int TITLE = 1;
 
-		private Context context;
 		private List<Card> lData;
+		private LayoutInflater inflater;
 
 		public SpinnerAdapter(List<Card> list, Context context) {
-			this.context = context;
+			inflater = LayoutInflater.from(context);
 			if (null != list) {
 				this.lData = list;
 			} else {
@@ -352,6 +370,7 @@ public class PopupSpinner extends LinearLayout {
 			}
 		}
 
+		@SuppressLint("InflateParams")
 		@Override
 		public View getView(final int position, View convertView,
 				ViewGroup parent) {
@@ -362,12 +381,12 @@ public class PopupSpinner extends LinearLayout {
 				int itemViewType = getItemViewType(position);
 				switch (itemViewType) {
 				case ITEM:
-					convertView = LayoutInflater.from(context).inflate(
+					convertView = inflater.inflate(
 							R.layout.popupspinnerdropitem, null);
 					break;
 
 				case TITLE:
-					convertView = LayoutInflater.from(context).inflate(
+					convertView = inflater.inflate(
 							R.layout.popupspinnerdropitemtitle, null);
 					holder.tvTitle = (TextView) convertView
 							.findViewById(R.id.diTvItemTitle);
