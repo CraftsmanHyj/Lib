@@ -8,9 +8,11 @@ import java.util.UUID;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.inputmethod.InputMethodManager;
 
@@ -118,6 +120,62 @@ public class Utils {
 					.getApplicationWindowToken(),
 					InputMethodManager.HIDE_NOT_ALWAYS);
 		}
+	}
+
+	/**
+	 * 该手机中是否安装了这个APP
+	 * 
+	 * @param context
+	 *            上下文
+	 * @param packageName
+	 *            APP包名
+	 * @return
+	 */
+	public static boolean hasApp(Context context, String packageName) {
+		Intent intent = context.getPackageManager().getLaunchIntentForPackage(
+				packageName);
+		return null != intent;
+	}
+
+	/**
+	 * 打开一个APP
+	 * 
+	 * @param context
+	 *            上下文
+	 * @param packageName
+	 *            APP包名
+	 * @return boolean false：打开失败，没有安装此APP；true：打开成功
+	 */
+	public static boolean startApp(Context context, String packageName) {
+		return startApp(context, packageName, new Bundle());
+	}
+
+	/**
+	 * 打开一个APP
+	 * 
+	 * @param context
+	 *            上下文
+	 * @param packageName
+	 *            APP包名
+	 * @param bundle
+	 *            要传的参数
+	 * @return boolean false：打开失败，没有安装此APP；true：打开成功
+	 */
+	public static boolean startApp(Context context, String packageName,
+			Bundle bundle) {
+		if (!hasApp(context, packageName)) {
+			return false;
+		}
+
+		String msg = "从<" + Utils.getAppName(context) + "_"
+				+ context.getPackageName() + ">跳转：" + getCurrentTime();
+		bundle.putString("value", msg);
+
+		Intent intent = context.getPackageManager().getLaunchIntentForPackage(
+				packageName);
+		intent.putExtras(bundle);
+		context.startActivity(intent);
+		return true;
 	}
 
 	/**

@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.hyj.lib.R;
-import com.hyj.lib.largeImage.view.LargeImageView;
 
 public class LargeImageViewActivity extends Activity {
 	private LargeImageView mLargeImageView;
@@ -15,7 +14,7 @@ public class LargeImageViewActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_large_image_view);
+		setContentView(R.layout.largeimage_main);
 
 		mLargeImageView = (LargeImageView) findViewById(R.id.largetImageview);
 		try {

@@ -24,7 +24,7 @@
         android:background="@drawable/tab_bg"
         android:orientation="horizontal" >
 
-        <com.hyj.lib.wechat.TabView
+        <com.hyj.lib.mainview.wechat.TabView
             android:id="@+id/chatTvOne"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             hyj:text_size="12sp"
             hyj:color="#ff45c01a" />
 
-        <com.hyj.lib.wechat.TabView
+        <com.hyj.lib.mainview.wechat.TabView
             android:id="@+id/chatTvTwo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
             hyj:text_size="12sp"
             hyj:color="#ff45c01a" />
 
-        <com.hyj.lib.wechat.TabView
+        <com.hyj.lib.mainview.wechat.TabView
             android:id="@+id/chatTvThird"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
             hyj:text_size="12sp"
             hyj:color="#ff45c01a" />
 
-        <com.hyj.lib.wechat.TabView
+        <com.hyj.lib.mainview.wechat.TabView
             android:id="@+id/chatTvFour"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

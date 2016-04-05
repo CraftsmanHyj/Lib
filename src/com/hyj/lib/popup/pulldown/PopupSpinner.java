@@ -1,4 +1,4 @@
-package com.hyj.lib.popup;
+package com.hyj.lib.popup.pulldown;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -196,7 +196,7 @@ public class PopupSpinner extends LinearLayout {
 		Animation animation = new TranslateAnimation(0, toX, 0, 0);
 		animation.setFillAfter(true);// True:图片停在动画结束位置
 		animation.setDuration(0);
-		// author.startAnimation(animation);
+		imgArrow.startAnimation(animation);
 
 		// 弹出承载内容的window
 		window = new PopupWindow(context);
@@ -357,16 +357,16 @@ public class PopupSpinner extends LinearLayout {
 
 		@Override
 		public int getItemViewType(int position) {
-			Card bean = lData.get(position);
+			Card bean = (Card) getItem(position);
 			if (0 == position) {
 				return TITLE;
+			}
+
+			Card beanLeast = (Card) getItem(position - 1);
+			if (beanLeast.getMediumType() != bean.getMediumType()) {
+				return TITLE;
 			} else {
-				Card beanLeast = lData.get(position - 1);
-				if (beanLeast.getMediumType() != bean.getMediumType()) {
-					return TITLE;
-				} else {
-					return ITEM;
-				}
+				return ITEM;
 			}
 		}
 
@@ -375,7 +375,7 @@ public class PopupSpinner extends LinearLayout {
 		public View getView(final int position, View convertView,
 				ViewGroup parent) {
 			ViewHolder holder;
-			if (convertView == null) {
+			if (null == convertView) {
 				holder = new ViewHolder();
 
 				int itemViewType = getItemViewType(position);

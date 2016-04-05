@@ -1,4 +1,4 @@
-package com.hyj.lib.tabfragment;
+package com.hyj.lib.mainview.tabfragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class Tab03Fragment extends Fragment {
+public class Tab02Fragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -16,7 +16,7 @@ public class Tab03Fragment extends Fragment {
 		TextView tv = new TextView(getActivity());
 		tv.setGravity(Gravity.CENTER);
 		tv.setTextSize(30);
-		tv.setText("发现");
+		tv.setText("通讯录");
 
 		return tv;
 	}

@@ -1,9 +1,7 @@
-package com.hyj.lib.tabfragment;
+package com.hyj.lib.mainview.tabfragment;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.hyj.lib.R;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,7 +14,17 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.TextView;
 
-public class FragmentTab extends FragmentActivity {
+import com.hyj.lib.R;
+
+/**
+ * <pre>
+ * 通过Fragment的Tab实现主界面布局
+ * </pre>
+ * 
+ * @author hyj
+ * @Date 2016-4-5 上午11:07:17
+ */
+public class FragmentTabActivity extends FragmentActivity {
 
 	private List<TextView> lTab;
 
@@ -78,7 +86,7 @@ public class FragmentTab extends FragmentActivity {
 	 * 
 	 * @param index
 	 */
-	private void switchFragment(int index, Bundle args) {
+	private void switchFragment(int index, Bundle bundle) {
 		// 设置Tab点击字体颜色
 		lTab.get(preIndex).setTextColor(Color.WHITE);
 		lTab.get(index).setTextColor(Color.RED);
@@ -101,17 +109,15 @@ public class FragmentTab extends FragmentActivity {
 		if (null == fragmentTo) {
 			try {
 				fragmentTo = (Fragment) clsTo.newInstance();
-				fragmentTo.setArguments(args);// 设置传过来的参数
-			} catch (InstantiationException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
+				fragmentTo.setArguments(bundle);// 设置传过来的参数
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 
 		// 如果有参数传递
-		if (null != args && !args.isEmpty()) {
-			fragmentTo.getArguments().putAll(args);
+		if (null != bundle && !bundle.isEmpty()) {
+			fragmentTo.getArguments().putAll(bundle);
 		}
 
 		// 设置Fragment切换效果
@@ -120,10 +126,12 @@ public class FragmentTab extends FragmentActivity {
 				android.R.anim.fade_out);
 
 		/**
-		 * 如果要切换到的Fragment没有被Fragment事务添加，则隐藏被切换的Fragment，添加要切换的Fragment
-		 * 否则，则隐藏被切换的Fragment，显示要切换的Fragment
+		 * <pre>
+		 *  如果要切换到的Fragment没有被Fragment事务添加，
+		 *  则隐藏被切换的Fragment，添加要切换的Fragment
+		 *  否则，则隐藏被切换的Fragment，显示要切换的Fragment
+		 * </pre>
 		 */
-
 		if (null != fragmentFrom) {
 			transaction.hide(fragmentFrom);
 		}

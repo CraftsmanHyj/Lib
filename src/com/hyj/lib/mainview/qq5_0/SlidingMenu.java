@@ -1,4 +1,4 @@
-package com.hyj.lib.qq5_0;
+package com.hyj.lib.mainview.qq5_0;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -15,12 +15,18 @@ import android.widget.LinearLayout;
 import com.hyj.lib.R;
 import com.nineoldandroids.view.ViewHelper;
 
-//自定义ViewGroup步骤
-//1、实现构造方法，获取自定义属性
-//2、在onMeasure计算view的宽、高，以及自己的宽、高
-//3、在onLayout中设置子布局的位置
-//4、onTouchEvent响应用户触摸事件
-
+/**
+ * <pre>
+ * 自定义ViewGroup步骤
+ * 1、实现构造方法，获取自定义属性
+ * 2、在onMeasure计算view的宽、高，以及自己的宽、高
+ * 3、在onLayout中设置子布局的位置
+ * 4、onTouchEvent响应用户触摸事件
+ * </pre>
+ * 
+ * @author hyj
+ * @Date 2016-4-5 上午11:05:32
+ */
 public class SlidingMenu extends HorizontalScrollView {
 
 	private LinearLayout mWapper;// 整个内容区域

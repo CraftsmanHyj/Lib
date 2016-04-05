@@ -49,24 +49,35 @@
             android:name="com.hyj.lib.ui.TimerCountActivity"
             android:launchMode="singleTask" />
 
+        <!-- 主界面实现方案合集 -->
+        <activity
+            android:name="com.hyj.lib.mainview.MainTabActivity"
+            android:launchMode="singleTask" />
         <!-- 仿微信界面 -->
         <activity
-            android:name="com.hyj.lib.wechat.WeChatActivivty"
+            android:name="com.hyj.lib.mainview.wechat.WeChatActivivty"
             android:launchMode="singleTask" />
+        <!-- Fragment实现Tab功能 -->
         <activity
-            android:name="com.hyj.lib.tabfragment.FragmentTab"
+            android:name="com.hyj.lib.mainview.tabfragment.FragmentTabActivity"
             android:launchMode="singleTask" />
+        <!-- qq5.0侧滑菜单 -->
+        <activity
+            android:name="com.hyj.lib.mainview.qq5_0.SlidingActivity"
+            android:launchMode="singleTask" />
+
+        <!-- ViewPager切换动画 -->
         <activity
             android:name="com.hyj.lib.viewpager.ViewPagerActivity"
             android:launchMode="singleTask" />
+        <!-- ViewPager切换动画,自定义向下兼容 -->
         <activity
             android:name="com.hyj.lib.viewpager.ViewPagerCustormerActivity"
             android:launchMode="singleTask" />
+
+        <!-- 自定义Title测试 -->
         <activity
             android:name="com.hyj.lib.title_bar.TitleBarActivity"
-            android:launchMode="singleTask" />
-        <activity
-            android:name="com.hyj.lib.qq5_0.SlidingActivity"
             android:launchMode="singleTask" />
 
         <!-- 图片美化处理 -->

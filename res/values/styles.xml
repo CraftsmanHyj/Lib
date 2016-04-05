@@ -22,4 +22,10 @@
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 
+    <!-- popup从底部上滑展示 -->
+    <style name="popup_bottom">
+        <item name="android:windowEnterAnimation">@anim/popup_show</item>
+        <item name="android:windowExitAnimation">@anim/popup_hiden</item>
+    </style>
+
 </resources>

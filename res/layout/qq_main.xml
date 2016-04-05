@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <com.hyj.lib.qq5_0.SlidingMenu
+    <com.hyj.lib.mainview.qq5_0.SlidingMenu
         android:id="@+id/qqSlidingMenu"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -32,6 +32,6 @@
                     android:text="菜单" />
             </LinearLayout>
         </LinearLayout>
-    </com.hyj.lib.qq5_0.SlidingMenu>
+    </com.hyj.lib.mainview.qq5_0.SlidingMenu>
 
 </LinearLayout>

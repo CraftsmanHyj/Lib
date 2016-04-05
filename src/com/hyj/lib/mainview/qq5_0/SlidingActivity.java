@@ -1,4 +1,4 @@
-package com.hyj.lib.qq5_0;
+package com.hyj.lib.mainview.qq5_0;
 
 import com.hyj.lib.R;
 

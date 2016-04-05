@@ -4,7 +4,7 @@
                 android:layout_height="match_parent">
 
 
-    <com.hyj.lib.largeImage.view.LargeImageView
+    <com.hyj.lib.largeImage.LargeImageView
         android:id="@+id/largetImageview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

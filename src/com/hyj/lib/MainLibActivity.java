@@ -33,13 +33,12 @@ import com.hyj.lib.listviewrefresh.ListViewRfreshActivity;
 import com.hyj.lib.lockpattern.LockPatternActivity;
 import com.hyj.lib.lockpattern2.LockTestActivity;
 import com.hyj.lib.luckydial.LuckyDialActivity;
+import com.hyj.lib.mainview.MainTabActivity;
 import com.hyj.lib.popup.PopupActivity;
-import com.hyj.lib.qq5_0.SlidingActivity;
 import com.hyj.lib.recyclerview.RecyclerActivity;
 import com.hyj.lib.scratch.ScratchCardActivity;
 import com.hyj.lib.startmenu.StartMenu;
 import com.hyj.lib.startmenu.StartMenu2;
-import com.hyj.lib.tabfragment.FragmentTab;
 import com.hyj.lib.title_bar.TitleBarActivity;
 import com.hyj.lib.tools.DialogUtils;
 import com.hyj.lib.tools.LogUtils;
@@ -50,7 +49,6 @@ import com.hyj.lib.ui.DialogActivity;
 import com.hyj.lib.ui.TimerCountActivity;
 import com.hyj.lib.viewpager.ViewPagerActivity;
 import com.hyj.lib.viewpager.ViewPagerCustormerActivity;
-import com.hyj.lib.wechat.WeChatActivivty;
 import com.hyj.lib.wechat_imageUp.ImageLoaderActivity;
 import com.hyj.lib.wechat_talk.WeChatTalkActivity;
 import com.hyj.lib.wish.WishActivity;
@@ -126,7 +124,7 @@ public class MainLibActivity extends Activity {
 		bean.setValue(ViewPagerIndicatorActivity.class);
 		lItems.add(bean);
 
-		if (hasApp(APP_MUSIC)) {
+		if (Utils.hasApp(this, APP_MUSIC)) {
 			bean = new ListItem();
 			bean.setTitle("猜歌游戏");
 			bean.setType(ListItem.TYPE_APP);
@@ -250,11 +248,6 @@ public class MainLibActivity extends Activity {
 		lItems.add(bean);
 
 		bean = new ListItem();
-		bean.setTitle("QQ5.0侧滑菜单");
-		bean.setValue(SlidingActivity.class);
-		lItems.add(bean);
-
-		bean = new ListItem();
 		bean.setTitle("自定义title测试");
 		bean.setValue(TitleBarActivity.class);
 		lItems.add(bean);
@@ -270,13 +263,8 @@ public class MainLibActivity extends Activity {
 		lItems.add(bean);
 
 		bean = new ListItem();
-		bean.setTitle("Fragment实现Tab功能");
-		bean.setValue(FragmentTab.class);
-		lItems.add(bean);
-
-		bean = new ListItem();
-		bean.setTitle("仿微信界面");
-		bean.setValue(WeChatActivivty.class);
+		bean.setTitle("主界面实现方案");
+		bean.setValue(MainTabActivity.class);
 		lItems.add(bean);
 
 		bean = new ListItem();
@@ -324,40 +312,12 @@ public class MainLibActivity extends Activity {
 					break;
 
 				case ListItem.TYPE_APP:
-					startApp((String) bean.getValue());
+					Utils.startApp(MainLibActivity.this,
+							(String) bean.getValue());
 					break;
 				}
 			}
 		});
-	}
-
-	/**
-	 * 该手机中是否安装了这个APP
-	 * 
-	 * @param packageName
-	 * @return
-	 */
-	private boolean hasApp(String packageName) {
-		Intent intent = getPackageManager().getLaunchIntentForPackage(
-				packageName);
-		return null != intent;
-	}
-
-	/**
-	 * 打开一个APP
-	 * 
-	 * @param packageName
-	 */
-	private void startApp(String packageName) {
-		if (!hasApp(packageName)) {
-			return;
-		}
-
-		Intent intent = getPackageManager().getLaunchIntentForPackage(
-				packageName);
-		intent.putExtra("value", "从<" + Utils.getAppName(this) + "_"
-				+ getPackageName() + ">跳转：" + Utils.getCurrentTime());
-		startActivity(intent);
 	}
 
 	@Override

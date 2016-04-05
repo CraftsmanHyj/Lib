@@ -19,7 +19,7 @@ public class LargeImageViewSimpleBakActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_large_image_view);
+		setContentView(R.layout.largeimage_main);
 
 		mImageView = (ImageView) findViewById(R.id.largetImageview);
 		try {

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:orientation="vertical" >
+
+    <!-- 这里的linearLayout加android:background=""这个属性要谨慎，如果加了后，popwindow是不能半透明了的 -->
+
+    <Button
+        android:id="@+id/popupBtnUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/holo_red_light"
+        android:text="版本更新" />
+
+    <Button
+        android:id="@+id/popupBtnBug"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/holo_red_light"
+        android:text="信息反馈" />
+
+    <Button
+        android:id="@+id/popupBtnExit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_red_light"
+        android:text="退　　出" />
+
+</LinearLayout>

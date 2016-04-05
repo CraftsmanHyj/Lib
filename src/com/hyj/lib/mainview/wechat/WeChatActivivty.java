@@ -1,4 +1,4 @@
-package com.hyj.lib.wechat;
+package com.hyj.lib.mainview.wechat;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

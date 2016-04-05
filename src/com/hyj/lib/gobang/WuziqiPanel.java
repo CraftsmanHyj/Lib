@@ -18,6 +18,14 @@ import android.view.View;
 
 import com.hyj.lib.R;
 
+/**
+ * <pre>
+ * 五子棋棋盘
+ * </pre>
+ * 
+ * @author hyj
+ * @Date 2016-4-5 上午10:21:31
+ */
 public class WuziqiPanel extends View {
 	private final int MAX_LINE = 10;// 最大行数
 	private final int MAX_COUNT_IN_LINE = 5;// 连子数

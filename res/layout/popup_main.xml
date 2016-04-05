@@ -10,10 +10,17 @@
         android:padding="5dp"
         android:text="自定义下拉列表框展示：" />
 
-    <com.hyj.lib.popup.PopupSpinner
+    <com.hyj.lib.popup.pulldown.PopupSpinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp" />
+
+    <Button
+        android:id="@+id/popupShowBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="从底部弹出Popup窗口" />
 
 </LinearLayout>

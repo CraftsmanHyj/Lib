@@ -1,4 +1,4 @@
-package com.hyj.lib.largeImage.view;
+package com.hyj.lib.largeImage;
 
 import java.io.IOException;
 import java.io.InputStream;
