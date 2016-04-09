@@ -9,9 +9,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.hyj.lib.R;
+import com.hyj.lib.down.DownLoad;
 import com.hyj.lib.http.download.DownLoadTask;
 import com.hyj.lib.http.download.DownService;
 import com.hyj.lib.http.download.FileInfo;
@@ -77,9 +81,10 @@ public class DownServiceActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.downservice);
+		setContentView(R.layout.downservice_main);
 
 		myInit();
+		singleFileDown();
 	}
 
 	private void myInit() {
@@ -157,5 +162,30 @@ public class DownServiceActivity extends Activity {
 		// 注销广播接收者
 		unregisterReceiver(receiver);
 		super.onDestroy();
+	}
+
+	/**
+	 * <pre>
+	 * 单文件、多线程、在线下载文件
+	 * 不在这个包里面
+	 * </pre>
+	 */
+	private void singleFileDown() {
+		Button btn = (Button) findViewById(R.id.downBtDown);
+		btn.setEnabled(false);
+
+		btn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				new Thread() {
+					public void run() {
+						String url = "http://downmobile.kugou.com/Android/KugouPlayer/7840/KugouPlayer_219_V7.8.4.apk";
+						DownLoad down = new DownLoad(DownServiceActivity.this);
+						down.downLoadFile(url);
+					};
+				}.start();
+			}
+		});
 	}
 }

@@ -11,5 +11,13 @@
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/ProgamFiles(green)/adt-bundle-windows-x86-20140702/sdk/platforms/android-19/android.jar" sourcepath="C:/ProgamFiles(green)/adt-bundle-windows-x86-20131030/sdk/sources/android-19">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/C:/ProgamFiles(green)/adt-bundle-windows-x86-20140702/sdk/docs/reference"/>
+		</attributes>
+		<accessrules>
+			<accessrule kind="nonaccessible" pattern="com/android/internal/**"/>
+		</accessrules>
+	</classpathentry>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

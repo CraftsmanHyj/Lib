@@ -91,8 +91,8 @@ public class TitleBar extends RelativeLayout {
 		rightText = ta.getString(R.styleable.title_rightText);
 
 		titleTextSize = ta.getDimension(R.styleable.title_titleTextSize, 14);
-		titleTextColor = ta.getColor(R.styleable.title_titleTextColor,
-				defaultColor);
+		titleTextColor = ta
+				.getColor(R.styleable.title_titleColor, defaultColor);
 		titleText = ta.getString(R.styleable.title_titleText);
 
 		ta.recycle();// 释放资源

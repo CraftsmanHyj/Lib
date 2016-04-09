@@ -2,12 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="5dp"
     android:orientation="vertical" >
 
+    <ListView
+        android:id="@+id/downListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
     <Button
-        android:id="@+id/downBtStart"
+        android:id="@+id/downBtDown"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="开始多线程下载照片" />
+        android:text="单文件、多线程、在线下载(弃用)" />
 
 </LinearLayout>

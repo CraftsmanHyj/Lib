@@ -1,5 +1,6 @@
 package com.hyj.lib.mainview.wechat;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -93,6 +94,7 @@ public class TabView extends View {
 		initTools();
 	}
 
+	@SuppressLint("DrawAllocation")
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -166,7 +168,7 @@ public class TabView extends View {
 			int attr = ta.getIndex(i);
 
 			switch (ta.getIndex(i)) {
-			case R.styleable.TabView_icon:
+			case R.styleable.TabView_text_icon:
 				BitmapDrawable bitmap = (BitmapDrawable) ta.getDrawable(attr);
 				mIcon = bitmap.getBitmap();
 				break;
@@ -175,7 +177,7 @@ public class TabView extends View {
 				mText = ta.getString(attr);
 				break;
 
-			case R.styleable.TabView_color:
+			case R.styleable.TabView_text_color:
 				defaultColor = ta.getColor(attr, defaultColor);
 				break;
 

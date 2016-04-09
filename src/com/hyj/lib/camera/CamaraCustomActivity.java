@@ -24,6 +24,7 @@ import com.hyj.lib.tools.FileUtils;
  * @Author hyj
  * @Date 2016-1-26 上午9:29:19
  */
+@SuppressWarnings("deprecation")
 public class CamaraCustomActivity extends Activity implements
 		SurfaceHolder.Callback {
 

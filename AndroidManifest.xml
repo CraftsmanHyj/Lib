@@ -35,16 +35,15 @@
             </intent-filter>
         </activity>
 
-        <!-- 单线程下载 -->
-        <activity
-            android:name="com.hyj.lib.down.DownLoadActivity"
-            android:launchMode="singleTask" />
+        <!-- 星型菜单 -->
         <activity
             android:name="com.hyj.lib.startmenu.StartMenu"
             android:launchMode="singleTask" />
         <activity
             android:name="com.hyj.lib.startmenu.StartMenu2"
             android:launchMode="singleTask" />
+
+        <!-- 倒计时 -->
         <activity
             android:name="com.hyj.lib.ui.TimerCountActivity"
             android:launchMode="singleTask" />
@@ -53,14 +52,17 @@
         <activity
             android:name="com.hyj.lib.mainview.MainTabActivity"
             android:launchMode="singleTask" />
-        <!-- 仿微信界面 -->
-        <activity
-            android:name="com.hyj.lib.mainview.wechat.WeChatActivivty"
-            android:launchMode="singleTask" />
+
         <!-- Fragment实现Tab功能 -->
         <activity
             android:name="com.hyj.lib.mainview.tabfragment.FragmentTabActivity"
             android:launchMode="singleTask" />
+
+        <!-- 仿微信界面 -->
+        <activity
+            android:name="com.hyj.lib.mainview.wechat.WeChatActivivty"
+            android:launchMode="singleTask" />
+
         <!-- qq5.0侧滑菜单 -->
         <activity
             android:name="com.hyj.lib.mainview.qq5_0.SlidingActivity"
@@ -70,6 +72,7 @@
         <activity
             android:name="com.hyj.lib.viewpager.ViewPagerActivity"
             android:launchMode="singleTask" />
+
         <!-- ViewPager切换动画,自定义向下兼容 -->
         <activity
             android:name="com.hyj.lib.viewpager.ViewPagerCustormerActivity"
@@ -98,6 +101,8 @@
         <activity
             android:name="com.hyj.lib.tree.TreeActivity"
             android:launchMode="singleTask" />
+
+        <!-- 万能适配器 -->
         <activity
             android:name="com.hyj.lib.adapter.AdapterAcitivty"
             android:launchMode="singleTask" />
@@ -112,9 +117,6 @@
             android:name="com.hyj.lib.downservice.DownServiceActivity"
             android:launchMode="singleTask" />
 
-        <service
-            android:name="com.hyj.lib.http.download.DownService"
-            android:launchMode="singleTask" />
         <service
             android:name="com.hyj.lib.http.download.DownService"
             android:launchMode="singleTask" />
@@ -255,6 +257,11 @@
         <!-- 弹出Popup实现方案合集 -->
         <activity
             android:name="com.hyj.lib.popup.PopupActivity"
+            android:launchMode="singleTask" />
+
+        <!-- GridView的Item设置成正方形 -->
+        <activity
+            android:name="com.hyj.lib.ui.SquareActivity"
             android:launchMode="singleTask" />
     </application>
 

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <attr name="icon" format="reference" />
-    <attr name="color" format="color" />
+    <attr name="text_icon" format="reference" />
     <attr name="text" format="string" />
     <attr name="text_size" format="reference|dimension" />
     <attr name="text_color" format="reference|color" />
@@ -27,8 +26,8 @@
 
     <!-- 微信6.0属性 -->
     <declare-styleable name="TabView">
-        <attr name="icon" />
-        <attr name="color" />
+        <attr name="text_icon" />
+        <attr name="text_color" />
         <attr name="text" />
         <attr name="text_size" />
     </declare-styleable>
@@ -37,7 +36,7 @@
     <declare-styleable name="title">
         <attr name="titleText" format="string" />
         <attr name="titleTextSize" format="dimension" />
-        <attr name="titleTextColor" format="color" />
+        <attr name="titleColor" format="color" />
         <attr name="leftTextColor" format="color" />
         <attr name="leftBackground" format="reference|color" />
         <attr name="leftText" format="string" />
@@ -84,6 +83,7 @@
 
     <!-- ViewPager指示器 -->
     <declare-styleable name="indicator">
+
         <!-- 可见的tab总数 -->
         <attr name="visibletablecount" format="integer" />
     </declare-styleable>

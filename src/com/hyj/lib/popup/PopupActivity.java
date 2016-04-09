@@ -1,5 +1,6 @@
 package com.hyj.lib.popup;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.PopupWindow.OnDismissListener;
 import com.hyj.lib.R;
 import com.hyj.lib.tools.DialogUtils;
 
+@SuppressLint("InflateParams")
 public class PopupActivity extends Activity implements OnClickListener {
 
 	private Button bt4Bottom;// 从底部上滑显示popup

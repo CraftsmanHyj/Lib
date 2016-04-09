@@ -285,7 +285,7 @@ public class PopupSpinner extends LinearLayout {
 			TextView tv = new TextView(getContext());
 			tv.setText(bean.getName());
 			tv.setPadding(10, 10, 10, 10);
-			Drawable drIcon = getResources().getDrawable(bean.getImg());
+			Drawable drIcon = getResources().getDrawable(bean.getImg(), null);
 			drIcon.setBounds(0, 0, drIcon.getMinimumWidth(),
 					drIcon.getMinimumHeight());
 			tv.setCompoundDrawables(null, drIcon, null, null);

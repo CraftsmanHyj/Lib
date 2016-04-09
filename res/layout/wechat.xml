@@ -30,10 +30,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="5dp"
-            hyj:icon="@drawable/tab_msg"
+            hyj:text_icon="@drawable/tab_msg"
             hyj:text="微信"
             hyj:text_size="12sp"
-            hyj:color="#ff45c01a" />
+            hyj:text_color="#ff45c01a" />
 
         <com.hyj.lib.mainview.wechat.TabView
             android:id="@+id/chatTvTwo"
@@ -41,10 +41,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="5dp"
-            hyj:icon="@drawable/tab_frend"
+            hyj:text_icon="@drawable/tab_frend"
             hyj:text="通讯录"
             hyj:text_size="12sp"
-            hyj:color="#ff45c01a" />
+            hyj:text_color="#ff45c01a" />
 
         <com.hyj.lib.mainview.wechat.TabView
             android:id="@+id/chatTvThird"
@@ -52,10 +52,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="5dp"
-            hyj:icon="@drawable/tab_find"
+            hyj:text_icon="@drawable/tab_find"
             hyj:text="发现"
             hyj:text_size="12sp"
-            hyj:color="#ff45c01a" />
+            hyj:text_color="#ff45c01a" />
 
         <com.hyj.lib.mainview.wechat.TabView
             android:id="@+id/chatTvFour"
@@ -63,10 +63,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="5dp"
-            hyj:icon="@drawable/tab_my"
+            hyj:text_icon="@drawable/tab_my"
             hyj:text="我"
             hyj:text_size="12sp"
-            hyj:color="#ff45c01a" />
+            hyj:text_color="#ff45c01a" />
     </LinearLayout>
 
 </LinearLayout>

@@ -15,10 +15,13 @@ import com.hyj.lib.tools.FileUtils;
 import com.hyj.lib.tools.LogUtils;
 
 /**
- * 下载线程代码
  * 
- * @author async
+ * <pre>
+ * 单文件、多线程、在线下载操作
+ * </pre>
  * 
+ * @author hyj
+ * @Date 2016-4-8 下午5:32:16
  */
 public class DownLoad {
 	private final int THREADCOUNT = 3;// 开启线程数

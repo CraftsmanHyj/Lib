@@ -71,8 +71,8 @@ public final class AnnotationsActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        btnTest = ((Button) hasViews.findViewById(id.annoBtTest));
         tv1 = ((TextView) hasViews.findViewById(id.annoTv1));
+        btnTest = ((Button) hasViews.findViewById(id.annoBtTest));
         tv2 = ((TextView) hasViews.findViewById(id.annoTv2));
         if (btnTest!= null) {
             btnTest.setOnClickListener(new OnClickListener() {

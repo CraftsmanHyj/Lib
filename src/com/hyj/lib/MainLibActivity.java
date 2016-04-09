@@ -18,7 +18,6 @@ import com.hyj.lib.adapter.AdapterAcitivty;
 import com.hyj.lib.annotaionsframe.AnnotationsActivity_;
 import com.hyj.lib.annotation.AnnotationActivity;
 import com.hyj.lib.camera.CameraMainActivity;
-import com.hyj.lib.down.DownLoadActivity;
 import com.hyj.lib.downservice.DownServiceActivity;
 import com.hyj.lib.flowlayout.FlowLayoutActivity;
 import com.hyj.lib.gobang.GobangActivity;
@@ -46,6 +45,7 @@ import com.hyj.lib.tools.Utils;
 import com.hyj.lib.tree.TreeActivity;
 import com.hyj.lib.tuling.TulingActivity;
 import com.hyj.lib.ui.DialogActivity;
+import com.hyj.lib.ui.SquareActivity;
 import com.hyj.lib.ui.TimerCountActivity;
 import com.hyj.lib.viewpager.ViewPagerActivity;
 import com.hyj.lib.viewpager.ViewPagerCustormerActivity;
@@ -103,6 +103,11 @@ public class MainLibActivity extends Activity {
 
 	private void initData() {
 		ListItem bean;
+
+		bean = new ListItem();
+		bean.setTitle("设置GridView的Item正方形");
+		bean.setValue(SquareActivity.class);
+		lItems.add(bean);
 
 		bean = new ListItem();
 		bean.setTitle("Popup弹出方案合集");
@@ -282,11 +287,6 @@ public class MainLibActivity extends Activity {
 		bean.setValue(TimerCountActivity.class);
 		lItems.add(bean);
 
-		bean = new ListItem();
-		bean.setTitle("多线程下载文件");
-		bean.setValue(DownLoadActivity.class);
-		lItems.add(bean);
-
 		adapter.notifyDataSetChanged();
 	}
 
@@ -296,7 +296,7 @@ public class MainLibActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				ListItem bean = lItems.get(position);
+				ListItem bean = (ListItem) parent.getItemAtPosition(position);
 
 				switch (bean.getType()) {
 				case ListItem.TYPE_ACTIVITY:

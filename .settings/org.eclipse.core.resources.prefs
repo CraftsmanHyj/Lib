@@ -11,7 +11,6 @@ encoding//src/com/hyj/lib/db/DBHelper.java=UTF-8
 encoding//src/com/hyj/lib/db/ThreadDao.java=UTF-8
 encoding//src/com/hyj/lib/db/ThreadDaoImpl.java=UTF-8
 encoding//src/com/hyj/lib/down/DownLoad.java=UTF-8
-encoding//src/com/hyj/lib/down/DownLoadActivity.java=UTF-8
 encoding//src/com/hyj/lib/down/UpLoadFile.java=UTF-8
 encoding//src/com/hyj/lib/downservice/DownServiceActivity.java=UTF-8
 encoding//src/com/hyj/lib/downservice/FileListAdapter.java=UTF-8

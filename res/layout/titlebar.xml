@@ -16,7 +16,7 @@
         hyj:rightText="More"
         hyj:rightTextColor="#FFFFFF"
         hyj:titleText="自定义标题"
-        hyj:titleTextColor="#123412"
+        hyj:titleColor="#123412"
         hyj:titleTextSize="10sp" />
 
 </LinearLayout>

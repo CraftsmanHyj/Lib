@@ -43,6 +43,7 @@ import org.apache.http.util.EntityUtils;
  * @author Xiaoxin
  * 
  */
+@SuppressWarnings("deprecation")
 public class HttpClientUtils extends HttpApi {
 	private static HttpClientUtils httpClientUtils = null;
 

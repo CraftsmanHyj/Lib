@@ -15,10 +15,12 @@ import android.os.Environment;
 import android.widget.Toast;
 
 /**
- * 上传文件
+ * <pre>
+ * HttpClient文件上传操作
+ * </pre>
  * 
- * @author async
- * 
+ * @author hyj
+ * @Date 2016-4-8 下午5:31:57
  */
 public class UpLoadFile {
 	private Context context;
