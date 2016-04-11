@@ -10,8 +10,8 @@
         <item name="android:windowExitAnimation">@anim/slide_down</item>
     </style>
 
-    <!-- 仿微信聊天 -->
-    <style name="Theme_AudioDialog" parent="@android:Theme.Dialog">
+    <!-- 仿微信聊天 @android:Theme.Dialog -->
+    <style name="Theme_AudioDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowFrame">@null</item>
         <!-- dialog是浮动的 -->

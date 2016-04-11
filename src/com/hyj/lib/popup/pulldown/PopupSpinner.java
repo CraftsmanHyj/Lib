@@ -274,6 +274,7 @@ public class PopupSpinner extends LinearLayout {
 	 * 
 	 * @param lMedium
 	 */
+	@SuppressWarnings("deprecation")
 	private void setMediumData(List<Medium> lMedium) {
 		if (null == lMedium || lMedium.isEmpty()) {
 			llMedium.setVisibility(View.GONE);
@@ -285,7 +286,7 @@ public class PopupSpinner extends LinearLayout {
 			TextView tv = new TextView(getContext());
 			tv.setText(bean.getName());
 			tv.setPadding(10, 10, 10, 10);
-			Drawable drIcon = getResources().getDrawable(bean.getImg(), null);
+			Drawable drIcon = getResources().getDrawable(bean.getImg());
 			drIcon.setBounds(0, 0, drIcon.getMinimumWidth(),
 					drIcon.getMinimumHeight());
 			tv.setCompoundDrawables(null, drIcon, null, null);

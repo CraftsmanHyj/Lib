@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
@@ -34,10 +33,15 @@ import com.hyj.lib.tools.FileUtils;
 import com.hyj.lib.wechat_imageUp.DirPopupWindow.OnDirSelectedListener;
 import com.hyj.lib.wechat_imageUp.ImageAdapter.PictureSelectedListener;
 
-@SuppressLint("HandlerLeak")
 public class ImageLoaderActivity extends Activity {
-	private final int DATA_LOADED = 0X110;// 数据加载完成
-	private final String SEPERATOR = ",";// 分隔符
+	/**
+	 * 数据加载完成
+	 */
+	private final int DATA_LOADED = 0X110;
+	/**
+	 * 数据 分隔符
+	 */
+	private final String SEPERATOR = ",";
 
 	private GridView mGridView;
 	private List<String> lImgs;
@@ -161,17 +165,24 @@ public class ImageLoaderActivity extends Activity {
 
 				curSelFolder = new FolderBean();
 				curSelFolder.setDirName("所有图片");
-				curSelFolder.setFirstImgPath(mFolderBeans.get(0)
-						.getFirstImgPath());
 				String imgPath = "";
 				int imgCount = 0;
 				for (FolderBean bean : mFolderBeans) {
 					imgPath += bean.getDirPath() + SEPERATOR;
 					imgCount += bean.getImgCount();
 				}
-				curSelFolder.setDirPath(imgPath.substring(0,
-						imgPath.length() - 1));
 				curSelFolder.setImgCount(imgCount);
+
+				// 当手机中没有一张照片的时候
+				if (mFolderBeans.isEmpty()) {
+					curSelFolder.setFirstImgPath("");
+					curSelFolder.setDirPath("");
+				} else {
+					curSelFolder.setFirstImgPath(mFolderBeans.get(0)
+							.getFirstImgPath());
+					curSelFolder.setDirPath(imgPath.substring(0,
+							imgPath.length() - 1));
+				}
 
 				mFolderBeans.add(0, curSelFolder);
 				gridViewDatas();
@@ -262,6 +273,10 @@ public class ImageLoaderActivity extends Activity {
 	 * @param FolderBean
 	 */
 	private void gridViewDatas() {
+		if (curSelFolder.getImgCount() <= 0) {
+			return;
+		}
+
 		lImgs.clear();
 		String[] dirPaths = curSelFolder.getDirPath().split(SEPERATOR);
 
