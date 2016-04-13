@@ -10,7 +10,7 @@ import com.hyj.lib.tools.Utils;
 
 /**
  * <pre>
- * 　　系统Application配置类，在这里做一些全局初始化设置
+ *   系统Application配置类，在这里做一些全局初始化设置
  *   ActivityLifecycleCallbacks：用于判断APP是否在后台运行
  *   	http://www.cnblogs.com/stay/p/5012370.html
  * </pre>

@@ -32,7 +32,9 @@ import com.hyj.lib.listviewrefresh.ListViewRfreshActivity;
 import com.hyj.lib.lockpattern.LockPatternActivity;
 import com.hyj.lib.lockpattern2.LockTestActivity;
 import com.hyj.lib.luckydial.LuckyDialActivity;
-import com.hyj.lib.mainview.MainTabActivity;
+import com.hyj.lib.mainview.qq5_0.SlidingActivity;
+import com.hyj.lib.mainview.tabfragment.FragmentTabActivity;
+import com.hyj.lib.mainview.wechat.WeChatActivivty;
 import com.hyj.lib.popup.PopupActivity;
 import com.hyj.lib.recyclerview.RecyclerActivity;
 import com.hyj.lib.scratch.ScratchCardActivity;
@@ -58,6 +60,10 @@ public class MainLibActivity extends Activity {
 	 * 猜歌游戏APP
 	 */
 	private final String APP_MUSIC = "com.hyj.music";
+	/**
+	 * 传递过去的bundle数据
+	 */
+	public static final String DATA_BUNDLE = "dataBundle";
 
 	private ListView lvItem;
 	private MainLibAdapter adapter;
@@ -208,13 +214,9 @@ public class MainLibActivity extends Activity {
 		lItems.add(bean);
 
 		bean = new ListItem();
-		bean.setTitle("九宫格解锁2");
-		bean.setValue(LockTestActivity.class);
-		lItems.add(bean);
-
-		bean = new ListItem();
-		bean.setTitle("九宫格解锁");
-		bean.setValue(LockPatternActivity.class);
+		bean.setTitle("九宫格方案集锦");
+		bean.setValue(SecondaryActivity.class);
+		bean.setBundle(getNineLockData());
 		lItems.add(bean);
 
 		bean = new ListItem();
@@ -268,8 +270,9 @@ public class MainLibActivity extends Activity {
 		lItems.add(bean);
 
 		bean = new ListItem();
-		bean.setTitle("主界面实现方案");
-		bean.setValue(MainTabActivity.class);
+		bean.setTitle("主界面实现方案集锦");
+		bean.setValue(SecondaryActivity.class);
+		bean.setBundle(getMainViewData());
 		lItems.add(bean);
 
 		bean = new ListItem();
@@ -290,6 +293,58 @@ public class MainLibActivity extends Activity {
 		adapter.notifyDataSetChanged();
 	}
 
+	/**
+	 * 九宫格实现集锦
+	 * @return
+	 */
+	private Bundle getNineLockData() {
+		ArrayList<ListItem> lData = new ArrayList<ListItem>();
+		ListItem bean;
+
+		bean = new ListItem();
+		bean.setTitle("九宫格解锁2");
+		bean.setValue(LockTestActivity.class);
+		lData.add(bean);
+
+		bean = new ListItem();
+		bean.setTitle("九宫格解锁");
+		bean.setValue(LockPatternActivity.class);
+		lData.add(bean);
+
+		Bundle bundle = new Bundle();
+		bundle.putSerializable(DATA_BUNDLE, lData);
+		return bundle;
+	}
+
+	/**
+	 * 主机面集锦
+	 * 
+	 * @return
+	 */
+	private Bundle getMainViewData() {
+		ArrayList<ListItem> lData = new ArrayList<ListItem>();
+		ListItem bean;
+
+		bean = new ListItem();
+		bean.setTitle("QQ5.0侧滑菜单");
+		bean.setValue(SlidingActivity.class);
+		lData.add(bean);
+
+		bean = new ListItem();
+		bean.setTitle("Fragment实现Tab功能");
+		bean.setValue(FragmentTabActivity.class);
+		lData.add(bean);
+
+		bean = new ListItem();
+		bean.setTitle("仿微信界面");
+		bean.setValue(WeChatActivivty.class);
+		lData.add(bean);
+
+		Bundle bundle = new Bundle();
+		bundle.putSerializable(DATA_BUNDLE, lData);
+		return bundle;
+	}
+
 	private void initListener() {
 		lvItem.setOnItemClickListener(new OnItemClickListener() {
 
@@ -304,6 +359,12 @@ public class MainLibActivity extends Activity {
 						Intent intent = new Intent();
 						intent.setClass(MainLibActivity.this,
 								(Class<?>) bean.getValue());
+
+						Bundle bundle = bean.getBundle();
+						if (null != bundle) {
+							intent.putExtras(bundle);
+						}
+
 						startActivity(intent);
 					} else {
 						Toast.makeText(MainLibActivity.this, "即将开通……",

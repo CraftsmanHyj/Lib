@@ -1,4 +1,4 @@
-package com.hyj.lib.mainview;
+package com.hyj.lib;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,14 +12,15 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.hyj.lib.ListItem;
-import com.hyj.lib.MainLibAdapter;
-import com.hyj.lib.R;
-import com.hyj.lib.mainview.qq5_0.SlidingActivity;
-import com.hyj.lib.mainview.tabfragment.FragmentTabActivity;
-import com.hyj.lib.mainview.wechat.WeChatActivivty;
-
-public class MainTabActivity extends Activity {
+/**
+ * <pre>
+ * 二级界面
+ * </pre>
+ * 
+ * @author hyj
+ * @Date 2016-4-13 下午5:15:25
+ */
+public class SecondaryActivity extends Activity {
 	private ListView lvItem;
 	private MainLibAdapter adapter;
 	private List<ListItem> lItems = new ArrayList<ListItem>();
@@ -44,23 +45,14 @@ public class MainTabActivity extends Activity {
 		lvItem.setAdapter(adapter);
 	}
 
+	@SuppressWarnings("unchecked")
 	private void initData() {
-		ListItem bean;
+		ArrayList<ListItem> lData = (ArrayList<ListItem>) getIntent()
+				.getSerializableExtra(MainLibActivity.DATA_BUNDLE);
 
-		bean = new ListItem();
-		bean.setTitle("QQ5.0侧滑菜单");
-		bean.setValue(SlidingActivity.class);
-		lItems.add(bean);
-
-		bean = new ListItem();
-		bean.setTitle("Fragment实现Tab功能");
-		bean.setValue(FragmentTabActivity.class);
-		lItems.add(bean);
-
-		bean = new ListItem();
-		bean.setTitle("仿微信界面");
-		bean.setValue(WeChatActivivty.class);
-		lItems.add(bean);
+		for (ListItem bean : lData) {
+			lItems.add(bean);
+		}
 	}
 
 	private void initLisetner() {
@@ -75,11 +67,11 @@ public class MainTabActivity extends Activity {
 				case ListItem.TYPE_ACTIVITY:
 					if (null != bean.getValue()) {
 						Intent intent = new Intent();
-						intent.setClass(MainTabActivity.this,
+						intent.setClass(SecondaryActivity.this,
 								(Class<?>) bean.getValue());
 						startActivity(intent);
 					} else {
-						Toast.makeText(MainTabActivity.this, "即将开通……",
+						Toast.makeText(SecondaryActivity.this, "即将开通……",
 								Toast.LENGTH_SHORT).show();
 					}
 					break;

@@ -50,7 +50,7 @@
 
         <!-- 主界面实现方案合集 -->
         <activity
-            android:name="com.hyj.lib.mainview.MainTabActivity"
+            android:name="com.hyj.lib.SecondaryActivity"
             android:launchMode="singleTask" />
 
         <!-- Fragment实现Tab功能 -->

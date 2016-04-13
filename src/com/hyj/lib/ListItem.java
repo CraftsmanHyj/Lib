@@ -2,6 +2,8 @@ package com.hyj.lib;
 
 import java.io.Serializable;
 
+import android.os.Bundle;
+
 public class ListItem implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -16,7 +18,8 @@ public class ListItem implements Serializable {
 
 	private String title;
 	private int type;// item类型
-	private Object value;
+	private Object value;// Class类名或APP包名
+	private Bundle bundle;// 传递过去的数据
 
 	public String getTitle() {
 		return title;
@@ -32,6 +35,14 @@ public class ListItem implements Serializable {
 
 	public void setValue(Object value) {
 		this.value = value;
+	}
+
+	public Bundle getBundle() {
+		return bundle;
+	}
+
+	public void setBundle(Bundle bundle) {
+		this.bundle = bundle;
 	}
 
 	/**
