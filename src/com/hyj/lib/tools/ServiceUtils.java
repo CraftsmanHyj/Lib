@@ -61,9 +61,13 @@ public class ServiceUtils {
 	/**
 	 * <pre>
 	 * 判断应用是否处于后台
-	 * BACKGROUND=400;EMPTY=500;
-	 * FOREGROUND=100;GONE=1000;
-	 * PERCEPTIBLE=130;SERVICE=300;ISIBLE=200
+	 * BACKGROUND=400;后台
+	 * EMPTY=500;空
+	 * FOREGROUND=100;前台
+	 * GONE=1000;进程不存在
+	 * PERCEPTIBLE=130;
+	 * SERVICE=300;服务
+	 * ISIBLE=200可见
 	 * </pre>
 	 * 
 	 * @param context
@@ -75,9 +79,7 @@ public class ServiceUtils {
 		List<RunningAppProcessInfo> lTasks = am.getRunningAppProcesses();
 		for (RunningAppProcessInfo task : lTasks) {
 			if (task.processName.equals(context.getPackageName())) {
-				if (task.importance == RunningAppProcessInfo.IMPORTANCE_BACKGROUND
-						|| task.importance == RunningAppProcessInfo.IMPORTANCE_PERCEPTIBLE
-						|| task.importance == RunningAppProcessInfo.IMPORTANCE_SERVICE) {
+				if (task.importance != RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {
 					return true;
 				} else {
 					return false;
